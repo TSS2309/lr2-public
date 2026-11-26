@@ -13,13 +13,22 @@ def divide(x, y):
     return x / y
 
 def main():
+    operations = {
+        '1': add,
+        '2': subtract,
+        '3': multiply,
+        '4': divide
+    }
+
     while True:
-        print("\n--- Калькулятор ---")
-        print("1. Сложение")
-        print("2. Вычитание")
-        print("3. Умножение")
-        print("4. Деление")
-        print("0. Выход")
+        print(
+            "\n--- Калькулятор ---\n"
+            "1. Сложение\n"
+            "2. Вычитание\n"
+            "3. Умножение\n"
+            "4. Деление\n"
+            "0. Выход"
+        )
         
         choice = input("Выберите операцию (1/2/3/4/0): ")
         
@@ -27,7 +36,7 @@ def main():
             print("До свидания!")
             break
             
-        if choice not in ('1', '2', '3', '4'):
+        if choice not in operations:
             print("Неверный ввод. Попробуйте снова.")
             continue
             
@@ -39,14 +48,8 @@ def main():
             print("Ошибка: нужно вводить только числа!")
             continue
 
-        if choice == '1':
-            print("Результат:", add(num1, num2))
-        elif choice == '2':
-            print("Результат:", subtract(num1, num2))
-        elif choice == '3':
-            print("Результат:", multiply(num1, num2))
-        elif choice == '4':
-            print("Результат:", divide(num1, num2))
+        result = operations[choice](num1, num2)
+        print("Результат:", result)
 
 if __name__ == "__main__":
     main()
